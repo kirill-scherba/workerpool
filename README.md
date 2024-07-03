@@ -12,7 +12,7 @@ Look example at example folder:
     go run ./examples/workerpool
 
 Or run this example in playground:
-<https://go.dev/play/p/Bnme-msu2Tb>
+<https://go.dev/play/p/QOEHdA2RiPm>
 
 ## Licence
 
