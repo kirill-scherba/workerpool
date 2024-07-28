@@ -46,7 +46,7 @@ func New[T any](numWorkers, channelBuffer int, job func(w int, data T),
 
 	// Start worker count process if count flag is true
 	if wp.count {
-		wp.workerCount()
+		go wp.workerCount()
 	}
 
 	// Close worker pool process
@@ -103,10 +103,8 @@ func (wp *WokerPool[T]) Close() {
 
 // workerCount counts executed jobs by worker.
 func (wp *WokerPool[T]) workerCount() {
-	go func() {
-		for w := range wp.cnt {
-			wp.Wcm[w]++
-		}
-		wp.wg.Done()
-	}()
+	for w := range wp.cnt {
+		wp.Wcm[w]++
+	}
+	wp.wg.Done()
 }
